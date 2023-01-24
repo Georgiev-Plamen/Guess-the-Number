@@ -1,3 +1,4 @@
+import java.math.RoundingMode;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -59,13 +60,21 @@ public class GuessTheNumber {
 
                 if (!itGuess) {
                     System.out.printf("You have %d attempts%n", attempt);
+                    System.out.println("You can use [H]int");
                     System.out.println("Guess the number [1-100]: ");
                     playerInput = scanner.next();
                 } else {
                     break;
                 }
 
+                if (playerInput.equals("H") || playerInput.equals("h") || playerInput.equals("hint") || playerInput.equals("Hint")) {
+                    int hintNumberUp = Math.round(computerNumber/10f)*10;
+                    int hintNumberDown = Math.round(computerNumber/10f)*10-10;
+
+                    System.out.printf("Computer choise is between: %d and %d%n", hintNumberDown, hintNumberUp);
+                }
                 boolean isValid = true;
+
 
                 for (int j = 0; j < playerInput.length(); j++) {
                     if (playerInput.charAt(j) < 48 || playerInput.charAt(j) > 57) {
