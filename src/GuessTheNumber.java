@@ -12,18 +12,21 @@ public class GuessTheNumber {
 
         switch (difficult) {
             case "E":
+            case "e":
             case "Easy":
             case "easy":
                 System.out.println("The difficulty is set on Easy and have 20 attempts");
                 attempt = 20;
                 break;
             case "M":
+            case "m":
             case "Medium":
             case "medium":
                 System.out.println("The difficulty is set on Medium and have 10 attempts");
                 attempt = 10;
                 break;
             case "H":
+            case "h":
             case "Hard":
             case "hard":
                 System.out.println("The difficulty is set on Medium and have 10 attempts");
