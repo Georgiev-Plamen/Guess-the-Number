@@ -5,13 +5,42 @@ public class GuessTheNumber {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Select difficulty: [E]asy (20 attempts), [M]edium (10 attempts), [H]ard (5 attempts): ");
+
+        String difficult = scanner.nextLine();
+        int attempt = 0;
+
+        switch (difficult) {
+            case "E":
+            case "Easy":
+            case "easy":
+                System.out.println("The difficulty is set on Easy and have 20 attempts");
+                attempt = 20;
+                break;
+            case "M":
+            case "Medium":
+            case "medium":
+                System.out.println("The difficulty is set on Medium and have 10 attempts");
+                attempt = 10;
+                break;
+            case "H":
+            case "Hard":
+            case "hard":
+                System.out.println("The difficulty is set on Medium and have 10 attempts");
+                attempt = 5;
+                break;
+
+
+        }
+
+
+
         Random randomNumber = new Random();
         int computerNumber = randomNumber.nextInt(100);
 
         boolean itsNumber = false;
         int high = 0;
         int low = 0;
-        int attempt = 5;
         boolean itGuess = false;
 
         while (attempt != 0) {
@@ -74,6 +103,7 @@ public class GuessTheNumber {
         } else {
             System.out.println();
             System.out.println("You lose !");
+            System.out.printf("Computer chose %d%n", computerNumber);
             System.out.println();
             if (high > 0) {
                 System.out.printf("You have %d result then is higher of the computer number%n", high);
