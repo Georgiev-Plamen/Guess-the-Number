@@ -9,6 +9,7 @@ public class GuessTheNumber {
 
         String difficult = scanner.nextLine();
         int attempt = 0;
+        int gameCount = 0;
 
         switch (difficult) {
             case "E":
@@ -78,6 +79,7 @@ public class GuessTheNumber {
                 if (isValid) {
                     int playerNumber = Integer.parseInt(playerInput);
                     attempt--;
+                    gameCount++;
 
                     if (playerNumber == computerNumber) {
                         System.out.println("You guess it !");
@@ -96,7 +98,7 @@ public class GuessTheNumber {
 
 
         if (itGuess) {
-            System.out.printf("You guess a number on %d attempt%n", attempt);
+            System.out.printf("You guess a number on %d attempt%n", gameCount);
             if (high > 0) {
                 System.out.printf("You have %d result then is higher of computer number%n", high);
             }
