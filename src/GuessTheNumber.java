@@ -12,31 +12,38 @@ public class GuessTheNumber {
         int attempt = 0;
         int gameCount = 0;
 
-        switch (difficult) {
-            case "E":
-            case "e":
-            case "Easy":
-            case "easy":
-                System.out.println("The difficulty is set on Easy and have 20 attempts");
-                attempt = 20;
-                break;
-            case "M":
-            case "m":
-            case "Medium":
-            case "medium":
-                System.out.println("The difficulty is set on Medium and have 10 attempts");
-                attempt = 10;
-                break;
-            case "H":
-            case "h":
-            case "Hard":
-            case "hard":
-                System.out.println("The difficulty is set on Medium and have 10 attempts");
-                attempt = 5;
-                break;
+        boolean correctDiffInput = false;
 
-
-        }
+        while (!correctDiffInput)
+            switch (difficult) {
+                case "E":
+                case "e":
+                case "Easy":
+                case "easy":
+                    System.out.println("The difficulty is set on Easy and have 20 attempts");
+                    attempt = 20;
+                    correctDiffInput = true;
+                    break;
+                case "M":
+                case "m":
+                case "Medium":
+                case "medium":
+                    System.out.println("The difficulty is set on Medium and have 10 attempts");
+                    attempt = 10;
+                    correctDiffInput = true;
+                    break;
+                case "H":
+                case "h":
+                case "Hard":
+                case "hard":
+                    System.out.println("The difficulty is set on Medium and have 10 attempts");
+                    attempt = 5;
+                    correctDiffInput = true;
+                    break;
+                default:
+                    System.out.println("Please insert one of option: [E]asy, [M]edium, [H]ard");
+                    difficult = scanner.nextLine();
+            }
 
 
 
@@ -68,8 +75,14 @@ public class GuessTheNumber {
                 }
 
                 if (playerInput.equals("H") || playerInput.equals("h") || playerInput.equals("hint") || playerInput.equals("Hint")) {
-                    int hintNumberUp = Math.round(computerNumber/10f)*10;
-                    int hintNumberDown = Math.round(computerNumber/10f)*10-10;
+                    int hintNumberUp = Math.round(computerNumber / 10f) * 10;
+                    int hintNumberDown = 0;
+                    if (computerNumber % 10 >= 5) {
+                        hintNumberDown = Math.round(computerNumber / 10f) * 10 - 10;
+                    } else {
+                        hintNumberDown = Math.round(computerNumber / 10f) * 10 + 10;
+                    }
+
 
                     System.out.printf("Computer choise is between: %d and %d%n", hintNumberDown, hintNumberUp);
                 }
